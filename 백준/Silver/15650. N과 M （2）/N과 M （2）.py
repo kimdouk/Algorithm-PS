@@ -1,14 +1,15 @@
 n, m = map(int,input().split())
-array = []
-
+result = []
+visited = [False] * (n+1)
 def dfs(idx):
-    if len(array) == m:
-        # print(' '.join(map(str,array)))
-        print(*array)
+    if len(result) ==m:
+        print(*result)
         return
     for i in range(idx,n+1):
-        if i not in array:
-            array.append(i)
+        if not visited[i]:
+            visited[i] = True
+            result.append(i)
             dfs(i+1)
-            array.pop()
+            result.pop()
+            visited[i] = False
 dfs(1)
