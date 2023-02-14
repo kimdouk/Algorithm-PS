@@ -1,15 +1,6 @@
-n, m = map(int,input().split())
-result = []
-visited = [False] * (n+1)
-def dfs():
-    if len(result) == m:
-        print(*result)
-        return
-    for i in range(1,n+1):
-        if not visited[i]:
-            visited[i] = True
-            result.append(i)
-            dfs()
-            result.pop()
-            visited[i] = False
-dfs()
+from itertools import permutations
+n,m = map(int,input().split())
+data = [i for i in range(1,n+1)]
+result = permutations(data,m)
+for i in result:
+    print(*i)
